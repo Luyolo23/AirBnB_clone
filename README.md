@@ -103,4 +103,4 @@ $ python3 unittest -m tests/test_console.py
 
 ## Authors :black_nib:
 * **Kagiso Makgaba** <[KagisoMakgaba1](https://github.com/KagisoMakgaba1)>
-* **Luyolo Tuta** <[sazad44](https://github.com/sazad44)>
+* **Luyolo Tuta** <[Luyolo23](https://github.com/Luyolo23)>
