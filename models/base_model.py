@@ -44,16 +44,11 @@ class BaseModel:
         models.storage.save()
 
     def to_dict(self):
-    """Returns the dictionary containing all the key/values of `__dict__`
-    of the instance.
+        """Return the dictionary of the BaseModel instance.
 
-    The `updated_at` and `created_at` instance attributes are converted to
-    ISO format. A new key named `__class__` is added to the dictionary.
-
-    Returns:
-    dict: The dictionary containing all the key/values of `__dict__`
-    of the instance.
-    """
+        Includes the key/value pair __class__ representing
+        the class name of the object.
+        """
         obj_dict = self.__dict__.copy()
         obj_dict["__class__"] = self.__class__.__name__
 
