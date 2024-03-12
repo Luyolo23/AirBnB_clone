@@ -118,18 +118,22 @@ class HBNBCommand(cmd.Cmd):
     def default(self, line):
         """Handles unrecognized commands.
         This method is called when an unrecognized command is entered.
-        It attempts to process the command as a custom command.
+        It attempts to process the command as a custom command
         Parameters:
         - line (str): The command line entered by the user.
         Returns: None
         """
+        # Ignore empty lines and lines with only spaces
+        if not line.strip():
+            return
+
         parts = line.split('.')
         if len(parts) == 2:
             class_name, action = parts
             self.processes_custom_command(class_name, action)
         else:
             print(f"Unrecognized command: {line}.\
-                  Type 'help' for assistance.\n")
+                Type 'help' for assistance.\n")
 
     def do_create(self, line):
         """Creates a new instance of a specified model class.
@@ -158,8 +162,6 @@ class HBNBCommand(cmd.Cmd):
             print(f"** Error creating instance: {e} **")
         except Exception as e:
             print(f"** Error saving instance: {e} **")
-
-
 
     def do_show(self, line):
         """Displays the string representation of a specified model instance.
