@@ -4,6 +4,9 @@ import unittest
 from models import City
 from datetime import datetime
 import os
+from models.city import City
+from models.base_model import BaseModel
+from tests.test_models.test_base_model import JSON_FILE_PATH
 
 
 class TestCityModel(unittest.TestCase):
@@ -45,12 +48,6 @@ if __name__ == '__main__':
     unittest.main()
 
 """This module tests the City model."""
-
-import os
-import unittest
-from models.city import City
-from models.base_model import BaseModel
-from tests.test_models.test_base_model import JSON_FILE_PATH
 
 
 class TestCityModel(unittest.TestCase):
@@ -115,4 +112,3 @@ class TestCityModel(unittest.TestCase):
     def test_nonexistent_method(self) -> None:
         """Tests for non-existent method."""
         self.assertFalse(hasattr(self.city1, "get_city()"))
-

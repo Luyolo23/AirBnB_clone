@@ -1,9 +1,14 @@
 #!/usr/bin/python3
 
 import unittest
+import os
+import models
+from time import sleep
+from models.base_model import BaseModel
 from datetime import datetime
 from models import BaseModel
 from models import storage
+
 
 class TestBaseModel(unittest.TestCase):
 
@@ -43,6 +48,7 @@ class TestBaseModel(unittest.TestCase):
         self.assertIsInstance(base_model_dict['created_at'], str)
         self.assertIsInstance(base_model_dict['updated_at'], str)
 
+
 if __name__ == '__main__':
     unittest.main()
 
@@ -53,12 +59,6 @@ Unittest classes:
     TestBaseModel_save
     TestBaseModel_to_dict
 """
-import os
-import models
-import unittest
-from datetime import datetime
-from time import sleep
-from models.base_model import BaseModel
 
 
 class TestBaseModel_instantiation(unittest.TestCase):
@@ -237,4 +237,3 @@ class TestBaseModel_to_dict(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-

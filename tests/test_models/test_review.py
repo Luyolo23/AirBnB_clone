@@ -5,6 +5,8 @@ import unittest
 from models import Review
 from datetime import datetime
 import os
+from models.base_model import BaseModel
+from tests.test_models.test_base_model import JSON_FILE_PATH
 
 
 class TestReviewModel(unittest.TestCase):
@@ -50,12 +52,6 @@ if __name__ == '__main__':
 
 
 """This module tests the Review model."""
-
-import os
-import unittest
-from models.review import Review
-from models.base_model import BaseModel
-from tests.test_models.test_base_model import JSON_FILE_PATH
 
 
 class TestReviewModel(unittest.TestCase):
@@ -125,4 +121,3 @@ class TestReviewModel(unittest.TestCase):
     def test_nonexistent_method(self) -> None:
         """Tests for non-existent method."""
         self.assertFalse(hasattr(self.review1, "op_review()"))
-

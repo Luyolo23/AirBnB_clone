@@ -5,6 +5,7 @@ import unittest
 from models import State
 from datetime import datetime
 import os
+from tests.test_models.test_base_model import JSON_FILE_PATH
 
 
 class TestStateModel(unittest.TestCase):
@@ -44,12 +45,6 @@ if __name__ == '__main__':
 
 
 """This module tests the State model."""
-
-import os
-import unittest
-from models.state import State
-from models.base_model import BaseModel
-from tests.test_models.test_base_model import JSON_FILE_PATH
 
 
 class TestStateModel(unittest.TestCase):
@@ -109,4 +104,3 @@ class TestStateModel(unittest.TestCase):
     def test_nonexistent_method(self) -> None:
         """Tests for non-existent method."""
         self.assertFalse(hasattr(self.state1, "get_state()"))
-

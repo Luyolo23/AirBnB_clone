@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-<<<<<<< HEAD
 
 import unittest
 from models import FileStorage
@@ -11,6 +10,10 @@ from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
 import os
+import json
+import models
+from datetime import datetime
+from models.engine.file_storage import FileStorage
 
 
 class TestFileStorage(unittest.TestCase):
@@ -27,12 +30,14 @@ class TestFileStorage(unittest.TestCase):
     def test_all_method(self):
         objects_dict = self.file_storage_instance.all()
         self.assertIsInstance(objects_dict, dict)
-        self.assertEqual(objects_dict, self.file_storage_instance._FileStorage__objects)
+        self.assertEqual(objects_dict,
+                         self.file_storage_instance._FileStorage__objects)
 
     def test_new_method(self):
         new_object_instance = BaseModel()
         self.file_storage_instance.new(new_object_instance)
-        key = "{}.{}".format(new_object_instance.__class__.__name__, new_object_instance.id)
+        key = "{}.{}".format(new_object_instance.__class__.__name__,
+                             new_object_instance.id)
         self.assertIn(key, self.file_storage_instance._FileStorage__objects)
         self.assertEqual(
             self.file_storage_instance._FileStorage__objects[key],
@@ -59,16 +64,23 @@ class TestFileStorage(unittest.TestCase):
         self.file_storage_instance.reload()
 
         # Check if the reloaded objects match the original ones
-        key1 = "{}.{}".format(obj1_instance.__class__.__name__, obj1_instance.id)
-        key2 = "{}.{}".format(obj2_instance.__class__.__name__, obj2_instance.id)
-        key3 = "{}.{}".format(obj3_instance.__class__.__name__, obj3_instance.id)
+        key1 = "{}.{}".format(obj1_instance.__class__.__name__,
+                              obj1_instance.id)
+        key2 = "{}.{}".format(obj2_instance.__class__.__name__,
+                              obj2_instance.id)
+        key3 = "{}.{}".format(obj3_instance.__class__.__name__,
+                              obj3_instance.id)
 
-        self.assertIn(key1, self.file_storage_instance._FileStorage__objects)
-        self.assertIn(key2, self.file_storage_instance._FileStorage__objects)
-        self.assertIn(key3, self.file_storage_instance._FileStorage__objects)
+        self.assertIn(key1,
+                      self.file_storage_instance._FileStorage__objects)
+        self.assertIn(key2,
+                      self.file_storage_instance._FileStorage__objects)
+        self.assertIn(key3,
+                      self.file_storage_instance._FileStorage__objects)
         self.assertEqual(
-            self.file_storage_instance._FileStorage__objects[key1].to_dict(),
-            obj1_instance.to_dict()
+                         self.file_storage_instance._FileStorage__objects
+                         [key1].to_dict(),
+                         obj1_instance.to_dict()
         )
         self.assertEqual(
             self.file_storage_instance._FileStorage__objects[key2].to_dict(),
@@ -83,26 +95,12 @@ class TestFileStorage(unittest.TestCase):
 if __name__ == '__main__':
     unittest.main()
 
-=======
 """Defines unittests for models/engine/file_storage.py.
 
 Unittest classes:
     TestFileStorage_instantiation
     TestFileStorage_methods
 """
-import os
-import json
-import models
-import unittest
-from datetime import datetime
-from models.base_model import BaseModel
-from models.engine.file_storage import FileStorage
-from models.user import User
-from models.state import State
-from models.place import Place
-from models.city import City
-from models.amenity import Amenity
-from models.review import Review
 
 
 class TestFileStorage_instantiation(unittest.TestCase):
@@ -259,4 +257,4 @@ class TestFileStorage_methods(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
->>>>>>> 27851ba5a228a6dadbc7cd6c8fe70ef3ea63d2ad
+27851ba5a228a6dadbc7cd6c8fe70ef3ea63d2ad

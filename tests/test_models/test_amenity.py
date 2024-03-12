@@ -5,6 +5,9 @@ import os
 import unittest
 from models import Amenity
 from datetime import datetime
+from models.amenity import Amenity
+from models.base_model import BaseModel
+from tests.test_models.test_base_model import JSON_FILE_PATH
 
 
 class TestAmenityModel(unittest.TestCase):
@@ -43,13 +46,7 @@ if __name__ == '__main__':
     unittest.main()
 
 
-"""This module tests the Amenity model."""
-
-import os
-import unittest
-from models.amenity import Amenity
-from models.base_model import BaseModel
-from tests.test_models.test_base_model import JSON_FILE_PATH
+"""This module tests the Amenity model"""
 
 
 class TestAmenityModel(unittest.TestCase):
@@ -109,4 +106,3 @@ class TestAmenityModel(unittest.TestCase):
     def test_nonexistent_method(self) -> None:
         """Tests for non-existent method."""
         self.assertFalse(hasattr(self.amenity1, "get_amenity()"))
-

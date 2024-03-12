@@ -9,9 +9,12 @@ from models.user import User
 from time import sleep
 from datetime import datetime
 import sys
+from tests.test_models.test_base_model import JSON_FILE_PATH
 sys.path.insert(0, 'AirBnB_clone/tests/test_models/test_user.py')
 
+
 class TestUserModel(unittest.TestCase):
+
     def setUp(self):
         self.user_instance = User()
 
@@ -57,12 +60,6 @@ if __name__ == '__main__':
 
 
 """This module tests the User model."""
-
-import os
-import unittest
-from models.user import User
-from models.base_model import BaseModel
-from tests.test_models.test_base_model import JSON_FILE_PATH
 
 
 class TestUserModel(unittest.TestCase):
@@ -132,4 +129,3 @@ class TestUserModel(unittest.TestCase):
     def test_nonexistent_method(self) -> None:
         """Tests for non-existent method."""
         self.assertFalse(hasattr(self.user2, "get_user_id()"))
-

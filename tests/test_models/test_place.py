@@ -5,6 +5,8 @@ import unittest
 from models import Place
 from datetime import datetime
 import os
+from models.base_model import BaseModel
+from tests.test_models.test_base_model import JSON_FILE_PATH
 
 
 class TestPlaceModel(unittest.TestCase):
@@ -74,12 +76,6 @@ if __name__ == '__main__':
 
 
 """This module tests the Place model."""
-
-import os
-import unittest
-from models.place import Place
-from models.base_model import BaseModel
-from tests.test_models.test_base_model import JSON_FILE_PATH
 
 
 class TestPlaceModel(unittest.TestCase):
@@ -166,4 +162,3 @@ class TestPlaceModel(unittest.TestCase):
     def test_nonexistent_method(self) -> None:
         """Tests for non-existent method."""
         self.assertFalse(hasattr(self.place1, "get_place()"))
-
