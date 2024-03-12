@@ -41,6 +41,34 @@ class HBNBCommand(cmd.Cmd):
         print()
         return True
 
+    def help_EOF(self):
+        """Provides help for the 'EOF' command.
+        This method prints a help message for the 'EOF' command,
+        explaining how to use it to exit the program.
+        """
+        print("EOF command to exit the program\n")
+
+    def do_help(self, arg):
+        """Provides help for the 'help' command.
+        This method prints a help message for the 'help' command,
+        listing available commands or providing general assistance.
+        """
+        if arg:
+            # Check if the argument is a valid command
+            try:
+                func = getattr(self, 'help_' + arg)
+            except AttributeError:
+                print(f"No help on {arg}")
+                return
+            func()
+        else:
+            # Print general help message
+            print("Available commands:")
+            print(" quit - Quits the program")
+            print(" EOF - Exits the console (Ctrl+D)")
+            # Add more commands as needed
+            print("\nType 'help <command>' for more information.")
+
     def help_quit(self):
         """Provides help for the 'quit' command.
         This method prints a help message for the 'quit' command,
