@@ -28,33 +28,37 @@ class HBNBCommand(cmd.Cmd):
 
     def empty_line(self):
         """Handles empty lines gracefully.
-        This method is called when an empty line is entered. It does nothing, allowing the user to enter a new command.
+        This method is called when an empty line is entered.
+        It does nothing, allowing the user to enter a new command.
         """
         pass
 
     def do_EOF(self, line):
         """Exits the console on EOF (Ctrl+D) command.
-        Triggered when the user presses Ctrl+D. It prints a newline character and returns True to exit the command loop.
+        Triggered when the user presses Ctrl+D. It prints a newline character
+        and returns True to exit the command loop.
         """
         print()
         return True
 
     def help_quit(self):
         """Provides help for the 'quit' command.
-        This method prints a help message for the 'quit' command, explaining how to use it to exit the program.
+        This method prints a help message for the 'quit' command,
+        explaining how to use it to exit the program.
         """
         print("Quit command to exit the program\n")
 
     def do_quit(self, line):
         """Quits the program.
-        This method is triggered by the 'quit' command. It returns True to exit the command loop and terminate the program.
+        This method is triggered by the 'quit' command. It returns True
+        to exit the command loop and terminate the program.
         """
         return True
 
-    
     def processes_custom_command(self, class_name, action):
         """Processes custom commands for model instances.
-        This method handles custom commands that operate on model instances, such as 'show', 'all', 'count', 'destroy', and 'update'.
+        This method handles custom commands that operate on model instances,
+        such as 'show', 'all', 'count', 'destroy', and 'update'.
         Parameters:
         - class_name (str): The name of the model class.
         - action (str): The action to perform, including any arguments.
@@ -66,7 +70,6 @@ class HBNBCommand(cmd.Cmd):
             action_name = parts[0]
             action_args = parts[1][:-1].split(',')
 
-            
             action_args = [arg.strip('\"') for arg in action_args]
 
             if action_name == 'show':
@@ -101,7 +104,6 @@ class HBNBCommand(cmd.Cmd):
                     attribute_name = action_args[1]
                     attribute_value = action_args[2]
 
-                    
                     setattr(obj, attribute_name, attribute_value)
                     obj.save()
                 else:
@@ -115,7 +117,8 @@ class HBNBCommand(cmd.Cmd):
 
     def default(self, line):
         """Handles unrecognized commands.
-        This method is called when an unrecognized command is entered. It attempts to process the command as a custom command.
+        This method is called when an unrecognized command is entered.
+        It attempts to process the command as a custom command.
         Parameters:
         - line (str): The command line entered by the user.
         Returns: None
@@ -130,9 +133,11 @@ class HBNBCommand(cmd.Cmd):
 
     def do_create(self, line):
         """Creates a new instance of a specified model class.
-        This method creates a new instance of the specified model class and saves it to the JSON file.
+        This method creates a new instance of the specified model
+        class and saves it to the JSON file.
         Parameters:
-        - line (str): The command line entered by the user, including the class name.
+        - line (str): The command line entered by the user,
+        including the class name.
         Returns: None
         """
         args = line.split()
@@ -150,9 +155,11 @@ class HBNBCommand(cmd.Cmd):
 
     def do_show(self, line):
         """Displays the string representation of a specified model instance.
-        This method prints the string representation of the specified model instance based on the class name and id.
+        This method prints the string representation of the specified model
+        instance based on the class name and id.
         Parameters:
-        - line (str): The command line entered by the user, including the class name and id.
+        - line (str): The command line entered by the user,
+        including the class name and id.
         Returns: None
         """
         args = line.split()
@@ -189,13 +196,14 @@ class HBNBCommand(cmd.Cmd):
 
     def do_all(self, line):
         """Lists all instances of a specified model class.
-        This method lists all instances of the specified model class, or all instances if no class is specified.
+        This method lists all instances of the specified model class,
+        or all instances if no class is specified.
         Parameters:
-        - line (str): The command line entered by the user, optionally including the class name.
+        - line (str): The command line entered by the user,
+        optionally including the class name.
         Returns: None
         """
         args = line.split()
-        
 
         if not args:
             print([str(obj) for obj in storage.all().values()])
@@ -211,9 +219,11 @@ class HBNBCommand(cmd.Cmd):
 
     def do_update(self, line):
         """Updates a specified model instance.
-        This method updates a specified model instance by adding or updating an attribute, and saves the change to the JSON file.
+        This method updates a specified model instance by adding or
+        updating an attribute, and saves the change to the JSON file.
         Parameters:
-        - line (str): The command line entered by the user, including the class name, id, attribute name, and new value.
+        - line (str): The command line entered by the user, including
+        the class name, id, attribute name, and new value.
         Returns: None
         """
         args = line.split()
@@ -262,7 +272,8 @@ class HBNBCommand(cmd.Cmd):
             super().cmdloop(intro)
         except KeyboardInterrupt:
             print("\nExiting the program...")
-            return False # Return False to indicate the program should exit
+            return False  # Return False to indicate the program should exit
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
