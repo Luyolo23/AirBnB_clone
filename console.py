@@ -129,24 +129,27 @@ class HBNBCommand(cmd.Cmd):
                   Type 'help' for assistance.\n")
 
     def do_create(self, line):
-        """Creates a new instance of a specified model class.
-        This method creates a new instance of the specified model class and saves it to the JSON file.
-        Parameters:
-        - line (str): The command line entered by the user, including the class name.
-        Returns: None
-        """
+        """Creates a new instance of BaseModel, saves it (to the JSON file) and prints the id."""
         args = line.split()
         if not args:
             print("** class name missing **")
             return
 
-        try:
-            class_name = args[0]
-            object = self.MODEL_CLASSES[class_name]()
-            object.save()
-            print(object.id)
-        except ImportError:
+        class_name = args[0]
+        if class_name not in self.MODEL_CLASSES:
             print("** class doesn't exist **")
+            return
+
+        try:
+            instance = self.MODEL_CLASSES[class_name]()
+            instance.save()
+            print(instance.id)
+        except TypeError as e:
+            print(f"** Error creating instance: {e} **")
+        except Exception as e:
+            print(f"** Error saving instance: {e} **")
+
+
 
     def do_show(self, line):
         """Displays the string representation of a specified model instance.
