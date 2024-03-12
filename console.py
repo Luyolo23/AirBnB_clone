@@ -131,7 +131,7 @@ class HBNBCommand(cmd.Cmd):
             print(f"Unrecognized command: {line}.\
                   Type 'help' for assistance.\n")
 
-    def do_create(self, linE):
+    def do_create(self, line):
         """Creates a new instance of a specified model class.
         This method creates a new instance of the specified model
         class and saves it to the JSON file.
